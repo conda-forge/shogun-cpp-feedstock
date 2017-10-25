@@ -1,5 +1,6 @@
 {% set name = "shogun-cpp" %}
 {% set version = "6.0.0" %}
+{% set build = 1 %}
 {% set sha256 = "413da26db7fb57aa36c2981bf92d23817c0a29f22051b331dbe5b86e46119748" %}
 {% set blas_variant = "openblas" %}
 
@@ -15,7 +16,7 @@ source:
     - use-detected-lapack.patch  # From upstream: properly link to OpenBLAS
 
 build:
-  number: 0
+  number: {{ build }}
   features:
     - blas_{{ blas_variant }}
   skip:
@@ -28,31 +29,31 @@ requirements:
     - bzip2 1.0.*
     - cmake
     - ctags
-    - curl 7.52.*
+    - curl >=7.44.0,<8
     - eigen
     - glpk 4.61|4.62
     - hdf5 1.8.18|1.8.18.*
     - json-c 0.12|0.12.*
     - libxml2 2.9.*
-    - lzo 2.09
+    - lzo 2.*
     - openblas 0.2.19|0.2.19.*
-    - protobuf 3.3.*
-    - snappy 1.1.4
+    - protobuf 3.4.*
+    - snappy 1.1.6|1.1.7
     - xz 5.2.*
     - zlib 1.2.8
   run:
     - arpack 3.5.*
     - bzip2 1.0.*
     - ctags
-    - curl 7.52.*
+    - curl >=7.44.0,<8
     - glpk 4.61|4.62
     - hdf5 1.8.18|1.8.18.*
     - json-c 0.12|0.12.*
     - libxml2 2.9.*
-    - lzo 2.09
+    - lzo 2.*
     - openblas 0.2.19|0.2.19.*
-    - protobuf 3.3.*
-    - snappy 1.1.4
+    - protobuf 3.4.*
+    - snappy 1.1.6|1.1.7
     - xz 5.2.*
     - zlib 1.2.8
 
