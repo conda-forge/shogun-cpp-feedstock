@@ -1,6 +1,6 @@
 {% set name = "shogun-cpp" %}
 {% set version = "6.0.0" %}
-{% set build = 1 %}
+{% set build = 2 %}
 {% set sha256 = "413da26db7fb57aa36c2981bf92d23817c0a29f22051b331dbe5b86e46119748" %}
 {% set blas_variant = "openblas" %}
 
@@ -36,11 +36,11 @@ requirements:
     - json-c 0.12|0.12.*
     - libxml2 2.9.*
     - lzo 2.*
-    - openblas 0.2.19|0.2.19.*
+    - openblas 0.2.20|0.2.20.*
     - protobuf 3.4.*
     - snappy 1.1.6|1.1.7
     - xz 5.2.*
-    - zlib 1.2.8
+    - zlib 1.2.11
   run:
     - arpack 3.5.*
     - bzip2 1.0.*
@@ -51,11 +51,11 @@ requirements:
     - json-c 0.12|0.12.*
     - libxml2 2.9.*
     - lzo 2.*
-    - openblas 0.2.19|0.2.19.*
+    - openblas 0.2.20|0.2.20.*
     - protobuf 3.4.*
     - snappy 1.1.6|1.1.7
     - xz 5.2.*
-    - zlib 1.2.8
+    - zlib 1.2.11
 
 test:
   requirements:
