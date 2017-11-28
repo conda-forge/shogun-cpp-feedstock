@@ -76,6 +76,7 @@ requirements:
     - openblas 0.2.20|0.2.20.*
     - openssl  # not linked against
     - protobuf 3.4.*
+    - rxcpp 4.0.0
     - snappy 1.1.6|1.1.7
     - xz 5.2.*
     - zlib 1.2.11
