@@ -1,7 +1,7 @@
 {% set name = "shogun-cpp" %}
-{% set version = "6.0.0" %}
-{% set build = 3 %}
-{% set sha256 = "413da26db7fb57aa36c2981bf92d23817c0a29f22051b331dbe5b86e46119748" %}
+{% set version = "6.1.0" %}
+{% set build = 0 %}
+{% set sha256 = "8f9cce48d479c73c16623e9ddab6fcd9ae6ab792cab311abb449448061b22a4d" %}
 {% set blas_variant = "openblas" %}
 
 package:
@@ -10,10 +10,9 @@ package:
 
 source:
   fn: shogun_{{ version }}.tar.gz
-  url: https://github.com/shogun-toolbox/shogun/archive/shogun_{{ version }}.tar.gz
+  # url: https://github.com/shogun-toolbox/shogun/archive/shogun_{{ version }}.tar.gz
+  url: https://github.com/shogun-toolbox/shogun/archive/9f2a09f38b3dfdfa2e98ac84750da2ccfc13047d.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - use-detected-lapack.patch  # From upstream: properly link to OpenBLAS
 
 build:
   number: {{ build }}
@@ -62,6 +61,7 @@ test:
     - python
   commands:
     - python -c "import ctypes; ctypes.cdll['${PREFIX}/lib/libshogun${SHLIB_EXT}']"  # [unix]
+    - $PREFIX/share/shogun/examples/libshogun/minimal-example  # [unix]
 
 about:
   home: http://shogun.ml
