@@ -9,6 +9,7 @@
 # the version!
 {% set gpl_commit = "29ca2ff930cd5d963b3a78e79160cc04d48970c2" %}
 {% set gpl_sha256 = "ff8a46b7775e784f07e9ffb02e7cd9b101f508c1c7b7d8cdbf1024a2efacdb22" %}
+{% set gpl_url = "https://github.com/shogun-toolbox/shogun-gpl/archive/" + gpl_commit + ".tar.gz" %}
 
 {% set build = 0 %}
 
@@ -28,23 +29,15 @@ build:
   number: {{ build }}
   features:
     - blas_{{ blas_variant }}
-  skip:
-    - True  # [win32 or (win and py2k)]
+  skip: true  # [win32 or (win and py2k)]
   script:
     - set -ex  # not automatically done by conda-build 2  # [unix]
 
     # HACK: download the gpl tarball
     # When we migrate to conda-build 3, can have multiple sources:
     #  https://github.com/conda/conda-build/pull/1929
-    - cd src
-    - cd gpl
-    # TODO: windows version of this
-    - curl -SsL https://github.com/shogun-toolbox/shogun-gpl/archive/{{ gpl_commit }}.tar.gz > shogun-gpl.tar.gz
-    - '[[ $(openssl sha256 shogun-gpl.tar.gz | cut -d" " -f2) == "{{ gpl_sha256 }}" ]]'
-    - tar xf shogun-gpl.tar.gz --strip-components=1
-    - rm shogun-gpl.tar.gz
-    - cd ..
-    - cd ..
+    - python $RECIPE_DIR/get_tarball.py  -c {{ gpl_sha256 }} -p src/gpl --strip-components 1 {{ gpl_url }}  # [unix]
+    - python %RECIPE_DIR%/get_tarball.py -c {{ gpl_sha256 }} -p src/gpl --strip-components 1 {{ gpl_url }}  # [win]
 
     - mkdir build                               # [unix]
     - cd build                                  # [unix]
@@ -138,8 +131,8 @@ test:
   commands:
     - python -c "import ctypes; ctypes.cdll['${PREFIX}/lib/libshogun${SHLIB_EXT}']"                           # [unix]
     - python -c "import os, ctypes; ctypes.cdll[os.path.join(os.environ['LIBRARY_LIB'], 'libshogun.dylib')]"  # [win]
-    - $PREFIX/share/shogun/examples/libshogun/minimal-example                # [unix]
-    - %LIBRARY_PREFIX%\\share\\shogun\\examples\\libshogun\\minimal-example  # [win]
+    - $PREFIX/share/shogun/examples/libshogun/minimal-example                  # [unix]
+    - '%LIBRARY_PREFIX%\\share\\shogun\\examples\\libshogun\\minimal-example'  # [win]
 
 about:
   home: http://shogun.ml
