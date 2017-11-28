@@ -73,7 +73,8 @@ build:
           -DUSE_SVMLIGHT=OFF ^                         # [win]
           -DENABLE_TESTING=OFF ^                       # [win]
           -DENABLE_COVERAGE=OFF ^                      # [win]
-          -DLICENSE_GPL_SHOGUN=ON                      # [win]
+          -DLICENSE_GPL_SHOGUN=ON ^                    # [win]
+          -DLIBSHOGUN_BUILD_STATIC=ON                  # [win]
     - if errorlevel 1 exit 1                           # [win]
 
     - msbuild src\\shogun\\libshogun.vcxproj           # [win]
