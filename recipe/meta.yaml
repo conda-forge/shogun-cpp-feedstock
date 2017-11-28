@@ -37,8 +37,9 @@ build:
     - python $RECIPE_DIR/get_tarball.py  -c {{ gpl_sha256 }} -p src/gpl --strip-components 1 {{ gpl_url }}  # [unix]
     - python %RECIPE_DIR%/get_tarball.py -c {{ gpl_sha256 }} -p src/gpl --strip-components 1 {{ gpl_url }}  # [win]
 
-    - mkdir build                               # [unix]
-    - cd build                                  # [unix]
+    - mkdir build
+    - cd build
+
     - |                                         # [unix]
         cmake .. \                              # [unix]
           -DCMAKE_PREFIX_PATH="$PREFIX" \       # [unix]
