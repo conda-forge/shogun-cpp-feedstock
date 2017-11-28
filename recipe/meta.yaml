@@ -137,6 +137,8 @@ test:
     - python -c "import os, ctypes; ctypes.cdll[os.path.join(os.environ['LIBRARY_LIB'], 'libshogun.dylib')]"  # [win]
     - $PREFIX/share/shogun/examples/libshogun/minimal                  # [unix]
     - '%LIBRARY_PREFIX%\\share\\shogun\\examples\\libshogun\\minimal'  # [win]
+    - conda inspect linkages -p $PREFIX {{ name }}  # [not win]
+    - conda inspect objects  -p $PREFIX {{ name }}  # [osx]
 
 about:
   home: http://shogun.ml
