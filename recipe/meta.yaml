@@ -102,6 +102,8 @@ test:
   commands:
     - python -c "import ctypes; ctypes.cdll['${PREFIX}/lib/libshogun${SHLIB_EXT}']"  # [unix]
     - $PREFIX/share/shogun/examples/libshogun/minimal  # [unix]
+    - conda inspect linkages -p $PREFIX {{ name }}  # [not win]
+    - conda inspect objects  -p $PREFIX {{ name }}  # [osx]
 
 about:
   home: http://shogun.ml
