@@ -1,8 +1,8 @@
 {% set name = "shogun-cpp" %}
 
 {% set version = "6.1.0" %}
-{% set commit = "9c36e70a49d25da4bc91c90664d4c93e046ce519" %} # XXX tmp
-{% set sha256 = "4a2e63bca499828706201419ea4843c4bdc8c2a952197b58e5b2afc14f4c6e10" %}
+{% set commit = "580f26f876a98b4e3f52f47c13d02fe00d72a59b" %} # XXX tmp
+{% set sha256 = "9e70b4b792ed3645ba4b33f8ba5f7b75492a0dab42fdd33f235681190856515b" %}
 
 # Shogun doesn't produce a single tarball you can build from anymore;
 # need to get the gpl-shogun tarball too. Remember to update this when updating
