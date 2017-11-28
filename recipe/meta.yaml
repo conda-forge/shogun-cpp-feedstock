@@ -100,7 +100,7 @@ test:
     - python
   commands:
     - python -c "import ctypes; ctypes.cdll['${PREFIX}/lib/libshogun${SHLIB_EXT}']"  # [unix]
-    - $PREFIX/share/shogun/examples/libshogun/minimal-example  # [unix]
+    - $PREFIX/share/shogun/examples/libshogun/minimal  # [unix]
 
 about:
   home: http://shogun.ml
