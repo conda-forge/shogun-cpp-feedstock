@@ -36,7 +36,7 @@ build:
     #  https://github.com/conda/conda-build/pull/1929
     - curl -SsL https://github.com/shogun-toolbox/shogun-gpl/archive/{{ gpl_commit }}.tar.gz > shogun-gpl.tar.gz
     - '[[ $(openssl sha256 shogun-gpl.tar.gz | cut -d" " -f2) == "{{ gpl_sha256 }}" ]]'
-    - tar xf shogun-gpl.tar.gz
+    - tar xf shogun-gpl.tar.gz --strip-components=1
 
     - mkdir build
     - cd build
