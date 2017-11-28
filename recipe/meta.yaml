@@ -1,7 +1,15 @@
 {% set name = "shogun-cpp" %}
 {% set version = "6.1.0" %}
 {% set build = 0 %}
-{% set sha256 = "39ab403b967876b4c6e4ad131fbb370a27e511bc775f822e27eb8514ae5b688b" %}
+{% set commit = "9c36e70a49d25da4bc91c90664d4c93e046ce519" %} # XXX tmp
+{% set sha256 = "4a2e63bca499828706201419ea4843c4bdc8c2a952197b58e5b2afc14f4c6e10" %}
+
+# Shogun doesn't produce a single tarball you can build from anymore;
+# need to get the gpl-shogun tarball too. Remember to update this when updating
+# the version!
+{% set gpl_commit = "29ca2ff930cd5d963b3a78e79160cc04d48970c2" %}
+{% set gpl_sha256 = "ff8a46b7775e784f07e9ffb02e7cd9b101f508c1c7b7d8cdbf1024a2efacdb22" %}
+
 {% set blas_variant = "openblas" %}
 
 package:
@@ -11,7 +19,7 @@ package:
 source:
   fn: shogun_{{ version }}.tar.gz
   # url: https://github.com/shogun-toolbox/shogun/archive/shogun_{{ version }}.tar.gz
-  url: https://github.com/shogun-toolbox/shogun/archive/f0f95831b6a7ae3a924d12114c517d00fbb3da52.tar.gz
+  url: https://github.com/shogun-toolbox/shogun/archive/{{ commit }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -20,6 +28,31 @@ build:
     - blas_{{ blas_variant }}
   skip:
     - True  # [win]
+  script:
+    - set -ex  # not automatically done by conda-build 2
+
+    # HACK: download the gpl tarball
+    - curl https://github.com/shogun-toolbox/shogun-gpl/archive/{{ gpl_commit }}.tar.gz -O shogun-gpl.tar.gz
+    - [[ $(openssl sha256 shogun-gpl.tar.gz | cut -d' ' -f2) == "{{ gpl_sha256 }}" ]]
+    - tar xf shogun-gpl.tar.gz
+
+    - mkdir build
+    - cd build
+    - |
+        cmake .. \
+          -DCMAKE_PREFIX_PATH="$PREFIX" \
+          -DCMAKE_INSTALL_PREFIX="$PREFIX" \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DBUILD_EXAMPLES=OFF \
+          -DBUILD_META_EXAMPLES=OFF \
+          -DBUNDLE_JSON=OFF \
+          -DBUNDLE_NLOPT=OFF \
+          -DUSE_SVMLIGHT=OFF \
+          -DENABLE_TESTING=OFF \
+          -DENABLE_COVERAGE=OFF \
+          -DLICENSE_GPL_SHOGUN=ON
+    - make -j $CPU_COUNT
+    - make install -j $CPU_COUNT
 
 requirements:
   build:
@@ -36,6 +69,7 @@ requirements:
     - libxml2 2.9.*
     - lzo 2.*
     - openblas 0.2.20|0.2.20.*
+    - openssl  # not linked against
     - protobuf 3.4.*
     - snappy 1.1.6|1.1.7
     - xz 5.2.*
