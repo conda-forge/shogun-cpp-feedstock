@@ -28,9 +28,10 @@ build:
   features:
     - blas_{{ blas_variant }}
   skip:
-    - true  # [win32]          # shogun won't build 32-bit
-    - true  # [win and py2k]   # shogun won't build on vc 9
-    - true  # [win and py35]   # don't need to double up on vc14 builds
+    - true  # [win32]                     # shogun won't build 32-bit
+    - true  # [win and py2k]              # shogun won't build on vc 9
+    - true  # [win and py35]              # don't need to double up on vc14 builds
+    - true  # [(not win) and (not py36)]  # don't do matrix builds on non-windows
   script:
     - set -ex  # not automatically done by conda-build 2  # [unix]
 
