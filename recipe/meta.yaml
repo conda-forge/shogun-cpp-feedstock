@@ -140,8 +140,8 @@ test:
     - '%LIBRARY_PREFIX%\\share\\shogun\\examples\\libshogun\\minimal.exe'  # [win]
 
     # check that one of the GPL headers was installed properly
-    - test -f $PREFIX/include/shogun/mathematics/SparseInverseCovariance.h              # [unix]
-    - if not exist %LIBRARY_INC%\\shogun\\mathematics\\SparseInverseCovariance.h exit 1 # [win]
+    - test -f $PREFIX/include/shogun/mathematics/SparseInverseCovariance.h               # [unix]
+    - if not exist %LIBRARY_INC%\\shogun\\mathematics\\SparseInverseCovariance.h exit 1  # [win]
 
     # linkage checks
     - python -c "import ctypes; ctypes.cdll['${PREFIX}/lib/libshogun${SHLIB_EXT}']"                      # [unix]
