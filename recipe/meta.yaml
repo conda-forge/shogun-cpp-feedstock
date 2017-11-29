@@ -100,8 +100,13 @@ test:
   requires:
     - python
   commands:
-    - python -c "import ctypes; ctypes.cdll['${PREFIX}/lib/libshogun${SHLIB_EXT}']"  # [unix]
     - $PREFIX/share/shogun/examples/libshogun/minimal  # [unix]
+
+    # check that one of the GPL headers was installed properly
+    - test -f $PREFIX/include/shogun/mathematics/SparseInverseCovariance.h  # [unix]
+
+    # linkage checks
+    - python -c "import ctypes; ctypes.cdll['${PREFIX}/lib/libshogun${SHLIB_EXT}']"  # [unix]
     - conda inspect linkages -p $PREFIX {{ name }}  # [not win]
     - conda inspect objects  -p $PREFIX {{ name }}  # [osx]
 
