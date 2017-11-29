@@ -140,6 +140,11 @@ test:
     - conda inspect linkages -p $PREFIX {{ name }}  # [not win]
     - conda inspect objects  -p $PREFIX {{ name }}  # [osx]
 
+    # config check
+    - cat $PREFIX/include/shogun/lib/config.h    # [unix]
+    - type %LIBRARY_INC%\\shogun\\lib\\config.h  # [win]
+
+
 about:
   home: http://shogun.ml
   license: GPL-3.0
