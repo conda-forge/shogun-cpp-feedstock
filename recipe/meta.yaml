@@ -26,7 +26,7 @@ source:
 build:
   number: {{ build }}
   features:
-    - blas_{{ blas_variant }}
+    - blas_{{ blas_variant }}  # [not win]
   skip:
     - true  # [win32]                     # shogun won't build 32-bit
     - true  # [win and py2k]              # shogun won't build on vc 9
