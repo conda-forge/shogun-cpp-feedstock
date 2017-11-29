@@ -102,7 +102,8 @@ requirements:
     - cmake
     - ctags
     - curl >=7.44.0,<8
-    - eigen
+    - eigen                     # [not win]
+    - eigen >=3.2,<3.3          # [win]
     - glpk 4.61|4.62
     - hdf5 1.10.1
     - json-c 0.12|0.12.*        # [not win]
