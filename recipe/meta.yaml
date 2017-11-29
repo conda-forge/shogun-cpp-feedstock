@@ -145,7 +145,7 @@ test:
 
     # linkage checks
     - python -c "import ctypes; ctypes.cdll['${PREFIX}/lib/libshogun${SHLIB_EXT}']"                      # [unix]
-    - python -c "import os, ctypes; ctypes.cdll[os.path.join(os.environ['LIBRARY_LIB'], 'shogun.dll')]"  # [win]
+    # - python -c "import os, ctypes; ctypes.cdll[os.path.join(os.environ['LIBRARY_LIB'], 'shogun.dll')]"  # [win]
     - conda inspect linkages -p $PREFIX {{ name }}  # [not win]
     - conda inspect objects  -p $PREFIX {{ name }}  # [osx]
 
