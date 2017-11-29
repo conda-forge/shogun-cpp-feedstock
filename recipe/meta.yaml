@@ -1,7 +1,8 @@
 {% set name = "shogun-cpp" %}
 
 {% set version = "6.1.0" %}
-{% set sha256 = "014a83a48b48674add7b2bcd5f37b7d6123b8c82c2cf3d69851ccb3404e11e1e" %}
+{% set commit = "ccea5a2b81c87ab85ee7f6bda36d50540b47a02b" %}
+{% set sha256 = "395408a3dc9c3db2b5c200b8722a13a60898c861633b99e6e250186adffd1370" %}
 
 # Shogun doesn't produce a single tarball you can build from anymore;
 # need to get the gpl-shogun tarball too. Remember to update this when updating
@@ -19,7 +20,7 @@ package:
 
 source:
   fn: shogun_{{ version }}.tar.gz
-  url: https://github.com/shogun-toolbox/shogun/archive/shogun_{{ version }}.tar.gz
+  url: https://github.com/shogun-toolbox/shogun/archive/shogun_{{ commit }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -100,8 +101,13 @@ test:
   requires:
     - python
   commands:
-    - python -c "import ctypes; ctypes.cdll['${PREFIX}/lib/libshogun${SHLIB_EXT}']"  # [unix]
     - $PREFIX/share/shogun/examples/libshogun/minimal  # [unix]
+
+    # check that one of the GPL headers was installed properly
+    - test -f $PREFIX/include/shogun/mathematics/SparseInverseCovariance.h  # [unix]
+
+    # linkage checks
+    - python -c "import ctypes; ctypes.cdll['${PREFIX}/lib/libshogun${SHLIB_EXT}']"  # [unix]
     - conda inspect linkages -p $PREFIX {{ name }}  # [not win]
     - conda inspect objects  -p $PREFIX {{ name }}  # [osx]
 
