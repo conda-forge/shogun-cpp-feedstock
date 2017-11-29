@@ -111,7 +111,6 @@ requirements:
     - libxml2 2.9.*
     - lzo 2.*
     - openblas 0.2.20|0.2.20.*  # [not win]
-    - openssl  # not linked against
     - protobuf 3.4.*            # [not win] # conda-forge protobuf doesn't have C++ version
     - rxcpp 4.0.0
     - snappy 1.1.6|1.1.7
@@ -137,8 +136,8 @@ test:
   requires:
     - python
   commands:
-    - $PREFIX/share/shogun/examples/libshogun/minimal                  # [unix]
-    - '%LIBRARY_PREFIX%\\share\\shogun\\examples\\libshogun\\minimal'  # [win]
+    - $PREFIX/share/shogun/examples/libshogun/minimal                      # [unix]
+    - '%LIBRARY_PREFIX%\\share\\shogun\\examples\\libshogun\\minimal.exe'  # [win]
 
     # check that one of the GPL headers was installed properly
     - test -f $PREFIX/include/shogun/mathematics/SparseInverseCovariance.h  # [unix]
