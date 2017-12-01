@@ -11,7 +11,7 @@
 {% set gpl_sha256 = "ff8a46b7775e784f07e9ffb02e7cd9b101f508c1c7b7d8cdbf1024a2efacdb22" %}
 {% set gpl_url = "http://github.com/shogun-toolbox/shogun-gpl/archive/" + gpl_commit + ".tar.gz" %}
 
-{% set build = 2 %}
+{% set build = 3 %}
 
 {% set blas_variant = "openblas" %}
 
@@ -55,9 +55,9 @@ build:
           -DBUNDLE_JSON=OFF \                   # [unix]
           -DBUNDLE_NLOPT=OFF \                  # [unix]
           -DUSE_SVMLIGHT=OFF \                  # [unix]
-          -DSWIG_EXECUTABLE=$PREFIX/bin/swig \  # [unix]
           -DENABLE_TESTING=OFF \                # [unix]
-          -DENABLE_COVERAGE=OFF                 # [unix]
+          -DENABLE_COVERAGE=OFF \               # [unix]
+          -DUSE_SWIG_DIRECTORS=ON               # [unix]
     - make -j $CPU_COUNT                        # [unix]
     - make install -j $CPU_COUNT                # [unix]
 
@@ -72,9 +72,9 @@ build:
           -DBUNDLE_JSON=OFF ^                          # [win]
           -DBUNDLE_NLOPT=OFF ^                         # [win]
           -DUSE_SVMLIGHT=OFF ^                         # [win]
-          -DSWIG_EXECUTABLE=%LIBRARY_BIN%\\swig.exe ^  # [win]
           -DENABLE_TESTING=OFF ^                       # [win]
-          -DENABLE_COVERAGE=OFF                        # [win]
+          -DENABLE_COVERAGE=OFF ^                      # [win]
+          -DUSE_SWIG_DIRECTORS=ON                      # [win]
     - if errorlevel 1 exit 1                           # [win]
 
     - msbuild /p:Configuration=Release src\\shogun\\libshogun.vcxproj      # [win]
@@ -116,7 +116,6 @@ requirements:
     - protobuf 3.4.*            # [not win] # conda-forge protobuf doesn't have C++ version
     - rxcpp 4.0.0
     - snappy 1.1.6|1.1.7
-    - swig
     - xz 5.2.*
     - zlib 1.2.11
   run:
@@ -151,6 +150,11 @@ test:
     - python -c "import os, ctypes; ctypes.cdll[os.path.join(os.environ['LIBRARY_LIB'], 'shogun.lib')]"  # [win]
     - conda inspect linkages -p $PREFIX {{ name }}  # [not win]
     - conda inspect objects  -p $PREFIX {{ name }}  # [osx]
+
+    # config check
+    - cat $PREFIX/include/shogun/lib/config.h    # [unix]
+    - type %LIBRARY_INC%\\shogun\\lib\\config.h  # [win]
+
 
 about:
   home: http://shogun.ml
