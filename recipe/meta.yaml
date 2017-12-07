@@ -4,14 +4,14 @@
 {% set commit = 'shogun_' + version %}
 {% set sha256 = "75f4d555efe06eaa7c4c12a1dc942f6e4d41a8ed495777a790b9bd9df936c19c" %}
 
+{% set build = 0 %}
+
 # Shogun doesn't produce a single tarball you can build from anymore;
 # need to get the gpl-shogun tarball too. Remember to update this when updating
 # the version!
 {% set gpl_commit = "29ca2ff930cd5d963b3a78e79160cc04d48970c2" %}
 {% set gpl_sha256 = "ff8a46b7775e784f07e9ffb02e7cd9b101f508c1c7b7d8cdbf1024a2efacdb22" %}
 {% set gpl_url = "http://github.com/shogun-toolbox/shogun-gpl/archive/" + gpl_commit + ".tar.gz" %}
-
-{% set build = 3 %}
 
 {% set blas_variant = "openblas" %}
 
