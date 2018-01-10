@@ -24,6 +24,8 @@ source:
   url: https://github.com/shogun-toolbox/shogun/archive/{{ commit }}.tar.gz
   sha256: {{ sha256 }}
 
+{% set lc, vs, ve, prefix, parbuild = "\\", "$", "", "$PREFIX", "-j $CPU_COUNT" %}  # [unix]
+{% set lc, vs, ve, prefix, parbuild = "^", "%", "%", "%LIBRAY_PREFIX%", "" %}       # [win]
 build:
   number: {{ build }}
   features:
@@ -33,55 +35,37 @@ build:
     - true  # [win and py2k]              # shogun won't build on vc 9
     - true  # [win and py35]              # don't need to double up on vc14 builds
     - true  # [(not win) and (not py36)]  # don't do matrix builds on non-windows
-  script:
-    - set -ex  # not automatically done by conda-build 2  # [unix]
+  script: |
+    set -ex  # not automatically done by conda-build 2  # [unix]
 
     # HACK: download the gpl tarball
     # When we migrate to conda-build 3, can have multiple sources:
     #  https://github.com/conda/conda-build/pull/1929
-    - python $RECIPE_DIR/get_tarball.py  -c {{ gpl_sha256 }} -p src/gpl --strip-components 1 {{ gpl_url }}  # [unix]
-    - python %RECIPE_DIR%/get_tarball.py -c {{ gpl_sha256 }} -p src/gpl --strip-components 1 {{ gpl_url }}  # [win]
+    python {{vs}}RECIPE_DIR{{ve}}/get_tarball.py -c {{ gpl_sha256 }} -p src/gpl --strip-components 1 {{ gpl_url }}
 
-    - mkdir build
-    - cd build
+    mkdir build
+    cd build
 
-    - |                                         # [unix]
-        cmake .. \                              # [unix]
-          -DCMAKE_PREFIX_PATH="$PREFIX" \       # [unix]
-          -DCMAKE_INSTALL_PREFIX="$PREFIX" \    # [unix]
-          -DCMAKE_BUILD_TYPE=Release \          # [unix]
-          -DBUILD_EXAMPLES=OFF \                # [unix]
-          -DBUILD_META_EXAMPLES=OFF \           # [unix]
-          -DBUNDLE_JSON=OFF \                   # [unix]
-          -DBUNDLE_NLOPT=OFF \                  # [unix]
-          -DUSE_SVMLIGHT=OFF \                  # [unix]
-          -DENABLE_TESTING=OFF \                # [unix]
-          -DENABLE_COVERAGE=OFF \               # [unix]
-          -DUSE_SWIG_DIRECTORS=ON               # [unix]
-    - make -j $CPU_COUNT                        # [unix]
-    - make install -j $CPU_COUNT                # [unix]
+    cmake ..                                 {{ ls }}
+      -G"{{vs}}CMAKE_GENERATOR{{ve}}"        {{ ls }}
+      -DCMAKE_PREFIX_PATH="{{ prefix }}"     {{ ls }}
+      -DCMAKE_INSTALL_PREFIX="{{ prefix }}"  {{ ls }}
+      -DCMAKE_BUILD_TYPE=Release             {{ ls }}
+      -DBUILD_EXAMPLES=OFF                   {{ ls }}
+      -DBUILD_META_EXAMPLES=OFF              {{ ls }}
+      -DBUNDLE_JSON=OFF                      {{ ls }}
+      -DBUNDLE_NLOPT=OFF                     {{ ls }}
+      -DUSE_SVMLIGHT=OFF                     {{ ls }}
+      -DENABLE_TESTING=OFF                   {{ ls }}
+      -DENABLE_COVERAGE=OFF                  {{ ls }}
+      -DUSE_SWIG_DIRECTORS=ON
+    if errorlevel 1 exit 1  # [win]
 
-    - |                                                # [win]
-        cmake .. ^                                     # [win]
-          -G"%CMAKE_GENERATOR%" ^                      # [win]
-          -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" ^     # [win]
-          -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^  # [win]
-          -DCMAKE_BUILD_TYPE=Release ^                 # [win]
-          -DBUILD_EXAMPLES=OFF ^                       # [win]
-          -DBUILD_META_EXAMPLES=OFF ^                  # [win]
-          -DBUNDLE_JSON=OFF ^                          # [win]
-          -DBUNDLE_NLOPT=OFF ^                         # [win]
-          -DUSE_SVMLIGHT=OFF ^                         # [win]
-          -DENABLE_TESTING=OFF ^                       # [win]
-          -DENABLE_COVERAGE=OFF ^                      # [win]
-          -DUSE_SWIG_DIRECTORS=ON                      # [win]
-    - if errorlevel 1 exit 1                           # [win]
+    cmake --build . --target shogun --config Release -- {{ parbuild }}
+    if errorlevel 1 exit 1  # [win]
 
-    - cmake --build . --target shogun --config Release   # [win]
-    - if errorlevel 1 exit 1                             # [win]
-
-    - cmake --build . --target install --config Release  # [win]
-    - if errorlevel 1 exit 1                             # [win]
+    cmake --build . --target install --config Release -- {{ parbuild }}
+    if errorlevel 1 exit 1  # [win]
 
 requirements:
   build:
