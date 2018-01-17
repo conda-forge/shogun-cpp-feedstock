@@ -46,18 +46,18 @@ build:
     mkdir build
     cd build
 
-    cmake ..                                 {{ ls }}
-      -G"{{vs}}CMAKE_GENERATOR{{ve}}"        {{ ls }}
-      -DCMAKE_PREFIX_PATH="{{ prefix }}"     {{ ls }}
-      -DCMAKE_INSTALL_PREFIX="{{ prefix }}"  {{ ls }}
-      -DCMAKE_BUILD_TYPE=Release             {{ ls }}
-      -DBUILD_EXAMPLES=OFF                   {{ ls }}
-      -DBUILD_META_EXAMPLES=OFF              {{ ls }}
-      -DBUNDLE_JSON=OFF                      {{ ls }}
-      -DBUNDLE_NLOPT=OFF                     {{ ls }}
-      -DUSE_SVMLIGHT=OFF                     {{ ls }}
-      -DENABLE_TESTING=OFF                   {{ ls }}
-      -DENABLE_COVERAGE=OFF                  {{ ls }}
+    cmake ..                                 {{ lc }}
+      -G"{{vs}}CMAKE_GENERATOR{{ve}}"        {{ lc }}
+      -DCMAKE_PREFIX_PATH="{{ prefix }}"     {{ lc }}
+      -DCMAKE_INSTALL_PREFIX="{{ prefix }}"  {{ lc }}
+      -DCMAKE_BUILD_TYPE=Release             {{ lc }}
+      -DBUILD_EXAMPLES=OFF                   {{ lc }}
+      -DBUILD_META_EXAMPLES=OFF              {{ lc }}
+      -DBUNDLE_JSON=OFF                      {{ lc }}
+      -DBUNDLE_NLOPT=OFF                     {{ lc }}
+      -DUSE_SVMLIGHT=OFF                     {{ lc }}
+      -DENABLE_TESTING=OFF                   {{ lc }}
+      -DENABLE_COVERAGE=OFF                  {{ lc }}
       -DUSE_SWIG_DIRECTORS=ON
     if errorlevel 1 exit 1  # [win]
 
