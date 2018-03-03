@@ -4,7 +4,7 @@
 {% set commit = 'shogun_' + version %}
 {% set sha256 = "75f4d555efe06eaa7c4c12a1dc942f6e4d41a8ed495777a790b9bd9df936c19c" %}
 
-{% set build = 0 %}
+{% set build = 1 %}
 
 # Shogun doesn't produce a single tarball you can build from anymore;
 # need to get the gpl-shogun tarball too. Remember to update this when updating
@@ -84,10 +84,10 @@ requirements:
     - glpk 4.61|4.62
     - hdf5 1.10.1
     - json-c 0.12|0.12.*        # [not win]
+    - libprotobuf 3.4.*
     - libxml2 2.9.*
     - lzo 2.*
     - openblas 0.2.20|0.2.20.*  # [not win]
-    - protobuf 3.4.*            # [not win] # conda-forge protobuf doesn't have C++ version
     - rxcpp 4.0.0
     - snappy 1.1.6|1.1.7
     - xz 5.2.*
@@ -100,10 +100,10 @@ requirements:
     - glpk 4.61|4.62
     - hdf5 1.10.1
     - json-c 0.12|0.12.*        # [not win]
+    - libprotobuf 3.4.*
     - libxml2 2.9.*
     - lzo 2.*
     - openblas 0.2.20|0.2.20.*  # [not win]
-    - protobuf 3.4.*
     - snappy 1.1.6|1.1.7
     - xz 5.2.*
     - zlib 1.2.11
