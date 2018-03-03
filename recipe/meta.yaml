@@ -84,7 +84,7 @@ requirements:
     - glpk 4.61|4.62
     - hdf5 1.10.1
     - json-c 0.12|0.12.*        # [not win]
-    - libprotobuf 3.4.*
+    - libprotobuf 3.5.*
     - libxml2 2.9.*
     - lzo 2.*
     - openblas 0.2.20|0.2.20.*  # [not win]
@@ -100,7 +100,7 @@ requirements:
     - glpk 4.61|4.62
     - hdf5 1.10.1
     - json-c 0.12|0.12.*        # [not win]
-    - libprotobuf 3.4.*
+    - libprotobuf 3.5.*
     - libxml2 2.9.*
     - lzo 2.*
     - openblas 0.2.20|0.2.20.*  # [not win]
