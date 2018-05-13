@@ -16,14 +16,16 @@ unified Machine Learning methods.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/shogun-cpp-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/shogun-cpp-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/shogun-cpp-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/shogun-cpp-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/shogun-cpp-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/shogun-cpp-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/shogun-cpp-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/shogun-cpp-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/shogun-cpp-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/shogun-cpp-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/shogun-cpp-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/shogun-cpp-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/shogun-cpp/badges/version.svg)](https://anaconda.org/conda-forge/shogun-cpp)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/shogun-cpp/badges/downloads.svg)](https://anaconda.org/conda-forge/shogun-cpp)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-shogun--cpp-green.svg)](https://anaconda.org/conda-forge/shogun-cpp) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/shogun-cpp.svg)](https://anaconda.org/conda-forge/shogun-cpp) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/shogun-cpp.svg)](https://anaconda.org/conda-forge/shogun-cpp) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/shogun-cpp.svg)](https://anaconda.org/conda-forge/shogun-cpp) |
 
 Installing shogun-cpp
 =====================
