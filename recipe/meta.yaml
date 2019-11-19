@@ -31,7 +31,8 @@ build:
     cd build
 
     cmake ..                                 {{ lc }}
-      -G"{{vs}}CMAKE_GENERATOR{{ve}}"        {{ lc }}
+      -G"{{vs}}CMAKE_GENERATOR{{ve}}"        {{ lc }}  # [not win]
+      -G"Ninja"                              {{ lc }}  # [win]
       -DCMAKE_PREFIX_PATH="{{ prefix }}"     {{ lc }}
       -DCMAKE_INSTALL_PREFIX="{{ prefix }}"  {{ lc }}
       -DCMAKE_BUILD_TYPE=Release             {{ lc }}
@@ -57,6 +58,7 @@ requirements:
     - {{ compiler('cxx') }}
     - python
     - cmake
+    - ninja        # [win]
   host:
     - arpack       # [not win]
     - bzip2
