@@ -25,7 +25,7 @@ source:
     - json-is-error.patch
 
 {% set lc, vs, ve, prefix, parbuild = "\\", "$", "", "$PREFIX", "-j $CPU_COUNT" %}  # [unix]
-{% set lc, vs, ve, prefix, parbuild = "^", "%", "%", "%LIBRARY_PREFIX%", "" %}      # [win]
+{% set lc, vs, ve, prefix, parbuild = "^", "%", "%", "%LIBRARY_PREFIX%", "-j%CPU_COUNT%" %}  # [win]
 build:
   number: 0
   skip: true  # [(win and vc<14) or (not x86_64)]
@@ -62,6 +62,7 @@ requirements:
     - {{ compiler('cxx') }}
     - python
     - cmake
+    - jom          # [win]
   host:
     - arpack       # [not win]
     - bzip2
