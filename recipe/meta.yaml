@@ -25,7 +25,7 @@ source:
     - json-is-error.patch
 
 {% set lc, vs, ve, prefix, parbuild = "\\", "$", "", "$PREFIX", "-j $CPU_COUNT" %}  # [unix]
-{% set lc, vs, ve, prefix, parbuild = "^", "%", "%", "%LIBRARY_PREFIX%", "-j%CPU_COUNT%" %}  # [win]
+{% set lc, vs, ve, prefix, parbuild = "^", "%", "%", "%LIBRARY_PREFIX%", "" %}  # [win]
 build:
   number: 0
   skip: true  # [(win and vc<14) or (not x86_64)]
@@ -35,8 +35,7 @@ build:
     cd build
 
     cmake ..                                 {{ lc }}
-      -G"{{vs}}CMAKE_GENERATOR{{ve}}"        {{ lc }}  # [not win]
-      -G"NMake Makefiles JOM"                {{ lc }}  # [win]
+      -G"{{vs}}CMAKE_GENERATOR{{ve}}"        {{ lc }}
       -DCMAKE_PREFIX_PATH="{{ prefix }}"     {{ lc }}
       -DCMAKE_INSTALL_PREFIX="{{ prefix }}"  {{ lc }}
       -DCMAKE_BUILD_TYPE=Release             {{ lc }}
@@ -63,7 +62,6 @@ requirements:
     - {{ compiler('cxx') }}
     - python
     - cmake
-    - jom          # [win]
   host:
     - arpack       # [not win]
     - bzip2
@@ -104,8 +102,6 @@ test:
     # linkage checks
     - python -c "import ctypes; ctypes.cdll['${PREFIX}/lib/libshogun${SHLIB_EXT}']"                      # [unix]
     - python -c "import os, ctypes; ctypes.cdll[os.path.join(os.environ['LIBRARY_LIB'], 'shogun.dll')]"  # [win]
-    - conda inspect linkages -p $PREFIX {{ name }}  # [not win]
-    - conda inspect objects  -p $PREFIX {{ name }}  # [osx]
 
     # config check
     - cat $PREFIX/include/shogun/lib/config.h    # [unix]
