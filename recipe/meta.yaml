@@ -78,7 +78,7 @@ requirements:
     - libcurl
     - libxml2
     - lzo
-    - libprotobuf
+    - libprotobuf  # [not win]
     - rxcpp 4.0.0
     - snappy
     - xz
