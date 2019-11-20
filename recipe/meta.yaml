@@ -20,6 +20,9 @@ source:
   - url: https://github.com/shogun-toolbox/shogun-gpl/archive/{{ gpl_commit }}.tar.gz
     sha256: {{ gpl_sha256 }}
     folder: src/gpl
+  - patches:
+    # https://github.com/shogun-toolbox/shogun/commit/9540a1dfe160bc8fa908dc6d8c9f02a45d79ceb2
+    - json-is-error.patch
 
 {% set lc, vs, ve, prefix, parbuild = "\\", "$", "", "$PREFIX", "-j $CPU_COUNT" %}  # [unix]
 {% set lc, vs, ve, prefix, parbuild = "^", "%", "%", "%LIBRARY_PREFIX%", "" %}      # [win]
