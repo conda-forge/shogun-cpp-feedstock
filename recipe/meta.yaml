@@ -66,7 +66,6 @@ requirements:
     - arpack       # [not win]
     - bzip2
     - ctags
-    - curl
     - eigen
     - glpk
     - hdf5
@@ -75,6 +74,7 @@ requirements:
     - libcblas =*=*netlib    # cblas.h and openblas apparently doesn't
     - liblapack =*=*netlib   # (at least on mac). Still allows any blas
     - liblapack =*=*netlib   # implementation at runtime.
+    - libcurl
     - libxml2
     - lzo
     - libprotobuf
@@ -83,19 +83,10 @@ requirements:
     - xz
     - zlib
   run:
-    - arpack       # [not win]
-    - bzip2
     - ctags
-    - curl
     - glpk
-    - hdf5
     - json-c       # [not win]
-    - libxml2
-    - lzo
-    - libprotobuf
     - snappy
-    - xz
-    - zlib
 
 test:
   requires:
