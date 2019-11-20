@@ -70,10 +70,10 @@ requirements:
     - glpk
     - hdf5
     - json-c       # [not win]
-    - libblas =*=*netlib     # Build with netlib, because it includes
-    - libcblas =*=*netlib    # cblas.h and openblas apparently doesn't
-    - liblapack =*=*netlib   # (at least on mac). Still allows any blas
-    - liblapack =*=*netlib   # implementation at runtime.
+    - libblas
+    - libcblas
+    - liblapack
+    - liblapack
     - libcurl
     - libxml2
     - lzo
