@@ -12,8 +12,6 @@ channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
-curl:
-- '7.64'
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
@@ -24,6 +22,8 @@ hdf5:
 - 1.10.5
 json_c:
 - '0.13'
+libcurl:
+- '7.64'
 libprotobuf:
 - '3.8'
 libxml2:
@@ -39,12 +39,12 @@ pin_run_as_build:
     max_pin: x.x.x
   bzip2:
     max_pin: x
-  curl:
-    max_pin: x
   glpk:
     max_pin: x.x
   json-c:
     max_pin: x.x
+  libcurl:
+    max_pin: x
   libxml2:
     max_pin: x.x
   lzo:
