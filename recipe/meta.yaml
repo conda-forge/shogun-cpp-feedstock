@@ -46,6 +46,7 @@ build:
       -DUSE_SVMLIGHT=OFF                     {{ lc }}
       -DENABLE_TESTING=OFF                   {{ lc }}
       -DENABLE_COVERAGE=OFF                  {{ lc }}
+      -DBLA_VENDOR=Generic                   {{ lc }}
       -DUSE_SWIG_DIRECTORS=ON
     if errorlevel 1 exit 1  # [win]
 
@@ -70,10 +71,10 @@ requirements:
     - glpk
     - hdf5
     - json-c       # [not win]
-    - libblas
-    - libcblas
-    - liblapack
-    - liblapacke
+    - libblas =*=*netlib     # Build with netlib, because it includes
+    - libcblas =*=*netlib    # cblas.h and openblas apparently doesn't
+    - liblapack =*=*netlib   # (at least on mac). Still allows any blas
+    - liblapack =*=*netlib   # implementation at runtime.
     - libxml2
     - lzo
     - libprotobuf
