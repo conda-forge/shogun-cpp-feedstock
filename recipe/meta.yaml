@@ -65,29 +65,29 @@ requirements:
     - jom          # [win]
   host:
     - arpack       # [not win]
-    - bzip2
-    - ctags
-    - eigen
-    - glpk
-    - hdf5
+    - bzip2              # temp: # [not win]
+    - ctags              # temp: # [not win]
+    - eigen              # temp: # [not win]
+    - glpk               # temp: # [not win]
+    - hdf5               # temp: # [not win]
     - json-c       # [not win]
-    - libblas
-    - libcblas
-    - liblapack
-    - liblapack
-    - libcurl
-    - libxml2
-    - lzo
+    - libblas            # temp: # [not win]
+    - libcblas           # temp: # [not win]
+    - liblapack          # temp: # [not win]
+    - liblapack          # temp: # [not win]
+    - libcurl            # temp: # [not win]
+    - libxml2            # temp: # [not win]
+    - lzo                # temp: # [not win]
     - libprotobuf  # [not win]
     - rxcpp 4.0.0
-    - snappy
-    - xz
-    - zlib
+    - snappy             # temp: # [not win]
+    - xz                 # temp: # [not win]
+    - zlib               # temp: # [not win]
   run:
-    - ctags
-    - glpk
+    - ctags              # temp: # [not win]
+    - glpk               # temp: # [not win]
     - json-c       # [not win]
-    - snappy
+    - snappy             # temp: # [not win]
 
 test:
   requires:
