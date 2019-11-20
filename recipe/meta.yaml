@@ -29,6 +29,7 @@ source:
 build:
   number: 0
   skip: true  # [(win and vc<14) or (not x86_64)]
+  skip: true  # TEMP XXX  # [not win]
   script: |
     mkdir build
     cd build
