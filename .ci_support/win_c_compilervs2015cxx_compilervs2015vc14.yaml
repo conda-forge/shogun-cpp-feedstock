@@ -14,14 +14,6 @@ glpk:
 - '4.65'
 hdf5:
 - 1.10.5
-libblas:
-- 3.8 *netlib
-libcblas:
-- 3.8 *netlib
-liblapack:
-- 3.8.0 *netlib
-liblapacke:
-- 3.8.0 *netlib
 libprotobuf:
 - '3.8'
 libxml2:
