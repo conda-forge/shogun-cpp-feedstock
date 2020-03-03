@@ -61,6 +61,7 @@ requirements:
     - ctags
     - libcurl
     - libgomp       # [linux]
+    - llvm-openmp   # [osx]
     - eigen
     - glpk
     - hdf5
