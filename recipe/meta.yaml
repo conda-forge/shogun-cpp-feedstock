@@ -81,7 +81,7 @@ requirements:
     - libgomp       # [linux]
     - glpk
     - hdf5
-    - json-c >=0.11,<=0.12
+    - json-c 0.12
     - libxml2
     - lzo
     - libblas * *_mkl  # [bla_vendor == "Intel"]
