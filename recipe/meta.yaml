@@ -42,6 +42,10 @@ build:
       -DENABLE_COVERAGE=OFF                                   {{ lc }}
       -DUSE_SWIG_DIRECTORS=ON                                 {{ lc }}
       -DLICENSE_GPL_SHOGUN=OFF                                {{ lc }}  # [bla_vendor == 'Intel']
+      -DBLAS_LIBRARIES="{{ PREFIX }}/lib/libcblas{{ SHLIB_EXT }};{{ PREFIX }}/lib/libblas{{ SHLIB_EXT }}"           {{ lc }}  # [bla_vendor == 'Generic']
+      -DLAPACK_LIBRARIES="{{ PREFIX }}/lib/liblapacke{{ SHLIB_EXT }};{{ PREFIX }}/lib/liblapack{{ SHLIB_EXT }}"     {{ lc }}  # [bla_vendor == 'Generic']
+      -DBLAS_LIBRARIES={{ PREFIX }}/lib/libmkl_rt{{ SHLIB_EXT }}                                                    {{ lc }}  # [bla_vendor == 'Intel']
+      -DLAPACK_LIBRARIES={{ PREFIX }}/lib/libmkl_rt{{ SHLIB_EXT }}                                                  {{ lc }}  # [bla_vendor == 'Intel']
       -DBLA_VENDOR={{ bla_vendor }}
     cmake --build . --target shogun --config Release -- {{ parbuild }}
     cmake --build . --target install --config Release -- {{ parbuild }}
