@@ -21,13 +21,13 @@ docker_image:
 glpk:
 - '4.65'
 hdf5:
-- 1.10.5
+- 1.10.6
 libblas:
 - 3.8 *netlib
 libcblas:
 - 3.8 *netlib
 libcurl:
-- '7.64'
+- '7'
 liblapack:
 - 3.8.0 *netlib
 liblapacke:
