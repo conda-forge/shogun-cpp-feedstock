@@ -17,7 +17,14 @@ Current build status
 ====================
 
 
-<table>
+<table><tr>
+    <td>Drone</td>
+    <td>
+      <a href="https://cloud.drone.io/conda-forge/shogun-cpp-feedstock">
+        <img alt="linux" src="https://img.shields.io/drone/build/conda-forge/shogun-cpp-feedstock/master.svg?label=Linux">
+      </a>
+    </td>
+  </tr>
     
   <tr>
     <td>Azure</td>
@@ -31,6 +38,20 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
+              <td>linux_aarch64_bla_vendorGeneric</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1907&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/shogun-cpp-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_bla_vendorGeneric" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_aarch64_bla_vendorIntel</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1907&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/shogun-cpp-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_bla_vendorIntel" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>linux_bla_vendorGeneric</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1907&branchName=master">
