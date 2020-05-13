@@ -20,16 +20,19 @@ source:
   - url: https://github.com/shogun-toolbox/shogun-gpl/archive/{{ gpl_commit }}.tar.gz
     sha256: {{ gpl_sha256 }}
     folder: src/gpl
+  - patches:
+    # https://github.com/shogun-toolbox/shogun/commit/9540a1dfe160bc8fa908dc6d8c9f02a45d79ceb2
+    - json-is-error.patch
 
 {% set lc, vs, ve, prefix, parbuild = "\\", "$", "", "$PREFIX", "-j $CPU_COUNT" %}  # [unix]
 build:
-  number: 3
+  number: 4
   skip: true  # [win32 or win]
   script: |
     mkdir build
     cd build
     cmake ..                                                  {{ lc }}
-      -G"{{vs}}CMAKE_GENERATOR{{ve}}"                         {{ lc }}
+      -G"{{ vs }}CMAKE_GENERATOR{{ ve }}"                     {{ lc }}
       -DCMAKE_PREFIX_PATH="{{ prefix }}"                      {{ lc }}
       -DCMAKE_INSTALL_PREFIX="{{ prefix }}"                   {{ lc }}
       -DCMAKE_BUILD_TYPE=Release                              {{ lc }}
@@ -64,7 +67,7 @@ requirements:
     - eigen
     - glpk
     - hdf5
-    - json-c 0.12
+    - json-c
     - libxml2
     - lzo
     - mkl-devel       # [bla_vendor == "Intel"]
@@ -78,23 +81,13 @@ requirements:
     - xz
     - zlib
   run:
-    - arpack
-    - bzip2
     - ctags
-    - libcurl
     - libgomp       # [linux]
     - glpk
-    - hdf5
-    - json-c 0.12
-    - libxml2
-    - lzo
+    - json-c
     - libblas * *_mkl  # [bla_vendor == "Intel"]
-    - libprotobuf
-    - snappy
-    - xz
-    - zlib
   run_constrained:
-   # Following disables MKL for the generic build.
+    # Following disables MKL for the generic build.
     - mkl <0.0.a0  # [bla_vendor == "Generic"]
 
 test:
@@ -116,7 +109,7 @@ test:
 
 about:
   home: http://shogun.ml
-  license: GPL-3.0
+  license: GPL-3.0-only
   license_family: GPL
   license_file: COPYING
   summary: 'Unified and efficient Machine Learning'
