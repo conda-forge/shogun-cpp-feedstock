@@ -22,6 +22,8 @@ glpk:
 - '4.65'
 hdf5:
 - 1.10.6
+json_c:
+- '0.13'
 libblas:
 - 3.8 *netlib
 libcblas:
@@ -48,6 +50,8 @@ pin_run_as_build:
   bzip2:
     max_pin: x
   glpk:
+    max_pin: x.x
+  json-c:
     max_pin: x.x
   libcurl:
     max_pin: x

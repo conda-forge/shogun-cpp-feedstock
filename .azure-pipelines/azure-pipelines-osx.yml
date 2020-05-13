@@ -6,16 +6,16 @@ jobs:
 - job: osx
   pool:
     vmImage: macOS-10.14
-  timeoutInMinutes: 360
   strategy:
-    maxParallel: 8
     matrix:
       osx_bla_vendorGeneric:
         CONFIG: osx_bla_vendorGeneric
-        UPLOAD_PACKAGES: True
+        UPLOAD_PACKAGES: 'True'
       osx_bla_vendorIntel:
         CONFIG: osx_bla_vendorIntel
-        UPLOAD_PACKAGES: True
+        UPLOAD_PACKAGES: 'True'
+    maxParallel: 8
+  timeoutInMinutes: 360
 
   steps:
   # TODO: Fast finish on azure pipelines?
