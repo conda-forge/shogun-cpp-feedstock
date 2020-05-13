@@ -26,7 +26,7 @@ source:
 
 {% set lc, vs, ve, prefix, parbuild = "\\", "$", "", "$PREFIX", "-j $CPU_COUNT" %}  # [unix]
 build:
-  number: 3
+  number: 4
   skip: true  # [win32 or win]
   script: |
     mkdir build
@@ -67,7 +67,7 @@ requirements:
     - eigen
     - glpk
     - hdf5
-    - json-c 0.12
+    - json-c
     - libxml2
     - lzo
     - mkl-devel       # [bla_vendor == "Intel"]
@@ -81,23 +81,13 @@ requirements:
     - xz
     - zlib
   run:
-    - arpack
-    - bzip2
     - ctags
-    - libcurl
     - libgomp       # [linux]
     - glpk
-    - hdf5
-    - json-c 0.12
-    - libxml2
-    - lzo
+    - json-c
     - libblas * *_mkl  # [bla_vendor == "Intel"]
-    - libprotobuf
-    - snappy
-    - xz
-    - zlib
   run_constrained:
-   # Following disables MKL for the generic build.
+    # Following disables MKL for the generic build.
     - mkl <0.0.a0  # [bla_vendor == "Generic"]
 
 test:
