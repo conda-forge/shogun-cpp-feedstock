@@ -32,7 +32,7 @@ build:
     mkdir build
     cd build
     cmake ..                                                  {{ lc }}
-      -G"{{vs}}CMAKE_GENERATOR{{ve}}"                         {{ lc }}
+      -G"{{ vs }}CMAKE_GENERATOR{{ ve }}"                     {{ lc }}
       -DCMAKE_PREFIX_PATH="{{ prefix }}"                      {{ lc }}
       -DCMAKE_INSTALL_PREFIX="{{ prefix }}"                   {{ lc }}
       -DCMAKE_BUILD_TYPE=Release                              {{ lc }}
@@ -109,7 +109,7 @@ test:
 
 about:
   home: http://shogun.ml
-  license: GPL-3.0
+  license: GPL-3.0-only
   license_family: GPL
   license_file: COPYING
   summary: 'Unified and efficient Machine Learning'
