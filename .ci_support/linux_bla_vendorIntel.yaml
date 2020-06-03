@@ -35,7 +35,7 @@ liblapack:
 liblapacke:
 - 3.8.0 *netlib
 libprotobuf:
-- '3.11'
+- '3.12'
 libxml2:
 - '2.9'
 lzo:
