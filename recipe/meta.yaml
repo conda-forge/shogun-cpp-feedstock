@@ -61,6 +61,7 @@ requirements:
     - cmake =3.15
     - libgomp       # [linux]
   host:
+    - libgomp       # [linux]
     - arpack
     - bzip2
     - ctags
@@ -83,7 +84,6 @@ requirements:
     - zlib
   run:
     - ctags
-    - libgomp       # [linux]
     - glpk
     - json-c
     - libblas * *_mkl  # [bla_vendor == "Intel"]
