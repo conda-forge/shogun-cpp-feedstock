@@ -1,23 +1,23 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
 arpack:
 - '3.7'
 bla_vendor:
-- Intel
+- Generic
 bzip2:
 - '1'
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
-- '7'
+- '10'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
+- clangxx
 cxx_compiler_version:
-- '7'
-docker_image:
-- condaforge/linux-anvil-comp7
+- '10'
 glpk:
 - '4.65'
 hdf5:
@@ -35,11 +35,13 @@ liblapack:
 liblapacke:
 - 3.8.0 *netlib
 libprotobuf:
-- '3.12'
+- '3.13'
 libxml2:
 - '2.9'
 lzo:
 - '2'
+macos_machine:
+- x86_64-apple-darwin13.4.0
 pin_run_as_build:
   arpack:
     max_pin: x.x.x
@@ -61,6 +63,8 @@ pin_run_as_build:
     max_pin: x.x
 snappy:
 - '1'
+target_platform:
+- osx-64
 xz:
 - '5.2'
 zlib:
