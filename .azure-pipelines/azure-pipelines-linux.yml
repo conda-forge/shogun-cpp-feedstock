@@ -8,12 +8,12 @@ jobs:
     vmImage: ubuntu-16.04
   strategy:
     matrix:
-      linux_bla_vendorGeneric:
-        CONFIG: linux_bla_vendorGeneric
+      linux_64_bla_vendorGeneric:
+        CONFIG: linux_64_bla_vendorGeneric
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_bla_vendorIntel:
-        CONFIG: linux_bla_vendorIntel
+      linux_64_bla_vendorIntel:
+        CONFIG: linux_64_bla_vendorIntel
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
     maxParallel: 8

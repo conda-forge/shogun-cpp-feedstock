@@ -35,15 +35,13 @@ liblapack:
 liblapacke:
 - 3.8.0 *netlib
 libprotobuf:
-- '3.12'
+- '3.13'
 libxml2:
 - '2.9'
 lzo:
 - '2'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
 pin_run_as_build:
   arpack:
     max_pin: x.x.x
@@ -65,6 +63,8 @@ pin_run_as_build:
     max_pin: x.x
 snappy:
 - '1'
+target_platform:
+- osx-64
 xz:
 - '5.2'
 zlib:

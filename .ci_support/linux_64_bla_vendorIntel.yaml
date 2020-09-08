@@ -1,7 +1,7 @@
 arpack:
 - '3.7'
 bla_vendor:
-- Generic
+- Intel
 bzip2:
 - '1'
 c_compiler:
@@ -35,7 +35,7 @@ liblapack:
 liblapacke:
 - 3.8.0 *netlib
 libprotobuf:
-- '3.12'
+- '3.13'
 libxml2:
 - '2.9'
 lzo:
@@ -61,6 +61,8 @@ pin_run_as_build:
     max_pin: x.x
 snappy:
 - '1'
+target_platform:
+- linux-64
 xz:
 - '5.2'
 zlib:
