@@ -7,7 +7,9 @@ bzip2:
 c_compiler:
 - gcc
 c_compiler_version:
-- '7'
+- '9'
+cdt_name:
+- cos6
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -15,9 +17,9 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '7'
+- '9'
 docker_image:
-- condaforge/linux-anvil-comp7
+- quay.io/condaforge/linux-anvil-comp7
 glpk:
 - '4.65'
 hdf5:
@@ -31,11 +33,11 @@ libcblas:
 libcurl:
 - '7'
 liblapack:
-- 3.8.0 *netlib
+- 3.8 *netlib
 liblapacke:
-- 3.8.0 *netlib
+- 3.8 *netlib
 libprotobuf:
-- '3.13'
+- '3.14'
 libxml2:
 - '2.9'
 lzo:
@@ -65,5 +67,8 @@ target_platform:
 - linux-64
 xz:
 - '5.2'
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 zlib:
 - '1.2'
