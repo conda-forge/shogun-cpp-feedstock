@@ -23,7 +23,7 @@ glpk:
 hdf5:
 - 1.10.6
 json_c:
-- '0.13'
+- '0.15'
 libblas:
 - 3.8 *netlib
 libcblas:
