@@ -26,7 +26,7 @@ source:
 
 {% set lc, vs, ve, prefix, parbuild = "\\", "$", "", "$PREFIX", "-j $CPU_COUNT" %}  # [unix]
 build:
-  number: 10
+  number: 11
   skip: true  # [win32 or win]
   merge_build_host: true  # [linux and bla_vendor == "Generic"]
   script: |
