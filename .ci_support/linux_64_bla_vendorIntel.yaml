@@ -23,7 +23,7 @@ docker_image:
 glpk:
 - '4.65'
 hdf5:
-- 1.10.6
+- 1.12.1
 json_c:
 - '0.15'
 libblas:
@@ -42,6 +42,8 @@ libxml2:
 - '2.9'
 lzo:
 - '2'
+mkl_devel:
+- '2021'
 pin_run_as_build:
   arpack:
     max_pin: x.x.x

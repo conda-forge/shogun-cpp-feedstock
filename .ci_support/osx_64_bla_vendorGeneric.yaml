@@ -21,7 +21,7 @@ cxx_compiler_version:
 glpk:
 - '4.65'
 hdf5:
-- 1.10.6
+- 1.12.1
 json_c:
 - '0.15'
 libblas:
@@ -42,6 +42,8 @@ lzo:
 - '2'
 macos_machine:
 - x86_64-apple-darwin13.4.0
+mkl_devel:
+- '2021'
 pin_run_as_build:
   arpack:
     max_pin: x.x.x
