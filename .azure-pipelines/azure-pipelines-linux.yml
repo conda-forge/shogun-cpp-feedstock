@@ -11,11 +11,11 @@ jobs:
       linux_64_bla_vendorGeneric:
         CONFIG: linux_64_bla_vendorGeneric
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
       linux_64_bla_vendorIntel:
         CONFIG: linux_64_bla_vendorIntel
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
   timeoutInMinutes: 360
 
   steps:
