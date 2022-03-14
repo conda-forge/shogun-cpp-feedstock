@@ -11,7 +11,7 @@ c_compiler_version:
 cdt_name:
 - cos6
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -19,7 +19,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '7'
 docker_image:
-- quay.io/condaforge/linux-anvil-comp7
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 glpk:
 - '4.65'
 hdf5:
@@ -37,11 +37,13 @@ liblapack:
 liblapacke:
 - 3.8 *netlib
 libprotobuf:
-- '3.16'
+- '3.18'
 libxml2:
 - '2.9'
 lzo:
 - '2'
+mkl_devel:
+- '2022'
 pin_run_as_build:
   arpack:
     max_pin: x.x.x
@@ -70,7 +72,5 @@ xz:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - cdt_name
-  - docker_image
 zlib:
 - '1.2'
