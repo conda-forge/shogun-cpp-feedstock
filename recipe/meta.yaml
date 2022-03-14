@@ -26,8 +26,8 @@ source:
 
 {% set lc, vs, ve, prefix, parbuild = "\\", "$", "", "$PREFIX", "-j $CPU_COUNT" %}  # [unix]
 build:
-  number: 11
-  skip: true  # [win32 or win]
+  number: 12
+  skip: true  # [win]
   merge_build_host: true  # [linux and bla_vendor == "Generic"]
   script: |
     mkdir build
@@ -58,7 +58,8 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - python
-    - cmake =3.15
+    - cmake
+    - make          # [unix]
     - libgomp       # [linux]
   host:
     - arpack

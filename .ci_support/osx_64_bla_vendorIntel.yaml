@@ -11,7 +11,7 @@ c_compiler:
 c_compiler_version:
 - '11'
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -35,13 +35,15 @@ liblapack:
 liblapacke:
 - 3.8 *netlib
 libprotobuf:
-- '3.16'
+- '3.19'
 libxml2:
 - '2.9'
 lzo:
 - '2'
 macos_machine:
 - x86_64-apple-darwin13.4.0
+mkl_devel:
+- '2021'
 pin_run_as_build:
   arpack:
     max_pin: x.x.x
