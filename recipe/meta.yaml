@@ -57,6 +57,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - make          # [unix]
     - python
     - cmake =3.15
     - libgomp       # [linux]
